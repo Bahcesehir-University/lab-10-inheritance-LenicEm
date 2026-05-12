@@ -152,14 +152,14 @@ Vehicle::Vehicle(std::string make, int year, double fuelLevel) : make(make),year
     void Vehicle::refuel(double amount){
         if(amount<0 )return;
         fuelLevel +=amount;
-        if(amount>100.0 ) fuelLevel=100.0;
+        if(fuelLevel>100.0 ) fuelLevel=100.0;
     }
 // ----------------------------------------------------------------
 // Car member function implementations
 // ----------------------------------------------------------------
 
 // TODO: Implement Car constructor (chain to Vehicle)
-    Car::Car(std::string make, int year, double fuelLevel,int numDoor) : Vehicle(make, year, fuelLevel),numDoors(numDoors){}
+    Car::Car(std::string make, int year, double fuelLevel,int numDoors) : Vehicle(make, year, fuelLevel),numDoors(numDoors){}
 
 // TODO: Implement getNumDoors()
     int Car::getNumDoors() const{return numDoors;}
@@ -167,7 +167,7 @@ Vehicle::Vehicle(std::string make, int year, double fuelLevel) : make(make),year
 //       Hint: use std::ostringstream for formatted decimal output
     std::string Car::describe()const {
         std::ostringstream oss;
-        oss<<"Car:" << make <<"("<<year<<"),"<<numDoors <<"doors,fuel:"<<"%";
+        oss<<"Car:" << make <<"("<<year<<"),"<<numDoors <<"doors,fuel:"<<fuelLevel<<"%";
         return oss.str();
     }
 
@@ -182,7 +182,7 @@ Vehicle::Vehicle(std::string make, int year, double fuelLevel) : make(make),year
 // TODO: Implement describe()
     std::string Truck::describe()const {
         std::ostringstream oss;
-        oss<<"Truck:" << make <<"("<<year<<"),"<<payloadTons <<"pay load,fuel:"<<"%";
+        oss<<"Truck:" << make <<"("<<year<<"),"<<payloadTons <<"payload,fuel:"<<fuelLevel<<"%";
         return oss.str();
 }
 // ================================================================
